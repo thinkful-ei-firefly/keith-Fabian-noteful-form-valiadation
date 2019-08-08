@@ -10,6 +10,7 @@ import config from '../config';
 import './App.css';
 import AddFolder from '../Add-Folder';
 import AddNote from '../AddNote/AddNote';
+import ErrorPage from '../ErrorBoundry';
 
 class App extends Component {
     state = {
@@ -102,6 +103,7 @@ class App extends Component {
         };
         return (
             <ApiContext.Provider value={value}>
+                <ErrorPage>
                 <div className="App">
                     <nav className="App__nav">{this.renderNavRoutes()}</nav>
                     <header className="App__header">
@@ -112,6 +114,7 @@ class App extends Component {
                     </header>
                     <main className="App__main">{this.renderMainRoutes()}</main>
                 </div>
+                </ErrorPage>
             </ApiContext.Provider>
         );
     }
