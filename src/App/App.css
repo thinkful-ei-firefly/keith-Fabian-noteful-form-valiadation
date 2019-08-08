@@ -38,3 +38,8 @@
   height: calc(100vh - 120px);
   overflow: auto;
 }
+
+#addFolder{
+  color: #fff;
+  font-size: 20px;
+}
