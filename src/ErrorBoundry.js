@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 class ErrorPage extends React.Component {
   state = {error: null};
@@ -11,6 +12,7 @@ class ErrorPage extends React.Component {
   }
   render() {
       // If there was an error, show an error page
+      console.log(this.props.children);
       if (this.state.error) {
           return (
               <main className="error-page">
@@ -25,3 +27,10 @@ class ErrorPage extends React.Component {
 }
 
 export default ErrorPage;
+
+ErrorPage.propTypes = {
+  children: propTypes.oneOfType([
+    propTypes.arrayOf(propTypes.node),
+    propTypes.node
+    ]).isRequired
+}

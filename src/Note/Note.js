@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ApiContext from '../ApiContext'
 import config from '../config'
 import './Note.css'
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 export default class Note extends React.Component {
   static defaultProps ={
@@ -70,9 +70,10 @@ export default class Note extends React.Component {
   }
 }
 
-Note.PropTypes = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  modified: PropTypes.string
+Note.propTypes = {
+  name: propTypes.string.isRequired,
+  id: propTypes.string.isRequired,
+  modified: propTypes.string,
+  onDeleteNote: propTypes.func.isRequired
 
 }
