@@ -43,3 +43,13 @@
   color: #fff;
   font-size: 20px;
 }
+
+#addNote {
+  color: #fff;
+  font-size: 20px;
+}
+
+#addNote span {
+  color: red;
+  font-size: 14px;
+}

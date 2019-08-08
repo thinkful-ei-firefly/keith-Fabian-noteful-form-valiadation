@@ -1,8 +1,10 @@
 import React from 'react';
 import config from './config';
 import './App/App.css';
+import ApiContext from './ApiContext';
 
 class AddForm extends React.Component{
+  static contextType = ApiContext;
   state = {
     folderName: ''
   }
@@ -22,11 +24,17 @@ class AddForm extends React.Component{
       body: JSON.stringify({
         "name": this.state.folderName
       })
-    }).catch(error => {
+    })
+    .then(res => res.ok?res.json():Promise.reject('Got error'))
+    .then(newFolder => {
+      console.log(newFolder);
+      this.props.history.push('/');
+      this.context.updateState(newFolder);
+    })
+    .catch(error => {
       console.log(error)
     });
-    this.setState({folderName: ''});
-    this.props.history.push('/');
+    
 
   };
 

@@ -9,12 +9,25 @@ import ApiContext from '../ApiContext';
 import config from '../config';
 import './App.css';
 import AddFolder from '../Add-Folder';
+import AddNote from '../AddNote/AddNote';
 
 class App extends Component {
     state = {
         notes: [],
         folders: []
     };
+
+    updateState = (folder) => {
+        this.setState({
+            folders: [...this.state.folders, folder]
+        })
+    }
+
+    updateNoteState = (note) => {
+        this.setState({
+            notes: [...this.state.notes, note],
+        })
+    }
 
     componentDidMount() {
         Promise.all([
@@ -74,6 +87,7 @@ class App extends Component {
                 ))}
                 <Route path="/note/:noteId" component={NotePageMain} />
                 <Route inexact path="/add-folder" component={AddFolder}/>
+                <Route path="/add-note" component={AddNote}/>
             </>
         );
     }
@@ -82,7 +96,9 @@ class App extends Component {
         const value = {
             notes: this.state.notes,
             folders: this.state.folders,
-            deleteNote: this.handleDeleteNote
+            deleteNote: this.handleDeleteNote,
+            updateState: this.updateState,
+            updateNoteState: this.updateNoteState
         };
         return (
             <ApiContext.Provider value={value}>
